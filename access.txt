@@ -1,0 +1,11 @@
+Atlas
+
+username: admin
+password: TcoIUm6ES560pJ4T
+
+SSH into ec2 instance:
+
+ssh unbuntu@3.99.188.220
+.ssh ssh -i ./ca-central.pem ubuntu@3.99.188.220
+
+mongo "mongodb+srv://cluster-vpc-peer-demo.ii2zw.mongodb.net/test" --username admin
