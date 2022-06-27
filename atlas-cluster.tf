@@ -1,5 +1,7 @@
 # example for this found at: https://github.com/mongodb/terraform-provider-mongodbatlas/blob/aec862a58a14dde67033542b1273da2738d91494/examples/MongoDB-Atlas-AWS-VPC-Peering/atlas.tf
 
+# terraform docs: https://registry.terraform.io/providers/mongodb/mongodbatlas/latest/docs
+
 resource "mongodbatlas_project" "aws_atlas" {
   name   = "AWS Peer"
   org_id = var.ATLAS_ORG_ID
