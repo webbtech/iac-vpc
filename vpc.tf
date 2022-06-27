@@ -1,7 +1,9 @@
+# terraform docs: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/default_vpc
+
 module "main-vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "vpc-demo"
+  name = "wt-vpc-v2"
   cidr = "10.0.0.0/16"
 
   azs                 = ["${var.AWS_REGION}a", "${var.AWS_REGION}b", "${var.AWS_REGION}d"]
@@ -16,8 +18,11 @@ module "main-vpc" {
 
   enable_dns_hostnames = true
 
-  tags = {
-    Terraform   = "true"
-  }
+  tags = merge(
+    {
+      Terraform = "true"
+    },
+    var.DEFAULT_TAGS
+  )
 }
 

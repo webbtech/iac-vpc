@@ -1,4 +1,4 @@
-data "aws_ami" "ubuntu-image" {
+/* data "aws_ami" "ubuntu-image" {
   most_recent = true
 
   filter {
@@ -12,9 +12,9 @@ data "aws_ami" "ubuntu-image" {
   }
 
   owners = ["099720109477"] # Canonical
-}
+} */
 
-resource "aws_instance" "atlas-test-server" {
+/* resource "aws_instance" "atlas-test-server" {
   ami = data.aws_ami.ubuntu-image.id
   instance_type = var.INSTANCE_TYPE
   key_name = var.KEY_NAME
@@ -34,9 +34,10 @@ resource "aws_instance" "atlas-test-server" {
     Name = "ATLAS-TEST-SERVER"
     Terraform = "true"
   }
-}
+} */
 
-resource "aws_security_group" "allow-ssh" {
+
+/* resource "aws_security_group" "allow-ssh" {
   vpc_id      = module.main-vpc.vpc_id
   name        = "allow-ssh"
   description = "security group that allows tcp traffic"
@@ -55,8 +56,15 @@ resource "aws_security_group" "allow-ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = {
-    Name         = "allow-open-ssh"
-    Terraform    = "true"
-  }
-}
+  # tags = {
+  #   Name         = "allow-open-ssh"
+  #   Terraform    = "true"
+  # }
+  tags = merge(
+    {
+      Name      = "allow-open-ssh"
+      Terraform = "true"
+    },
+    var.DEFAULT_TAGS
+  )
+} */
