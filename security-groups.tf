@@ -68,3 +68,47 @@
     var.DEFAULT_TAGS
   )
 } */
+
+module "http_sg" {
+  source  = "terraform-aws-modules/security-group/aws//modules/http-80"
+  version = "~> 3.0"
+
+  name        = "http-80-sg"
+  description = "Security group with HTTP ports open for everybody"
+  vpc_id      = module.main-vpc.vpc_id
+
+  ingress_cidr_blocks = ["0.0.0.0/0"]
+    # Allow ingress rules to be accessed only within current VPC
+  # ingress_cidr_blocks = [data.aws_vpc.default.cidr_block]
+
+  # Allow all rules for all protocols
+  egress_rules = ["http-80-tcp"]
+
+  tags = merge(
+    {
+      # Name = format("%s-%s-http", var.svc_prefix, var.svc_name)
+      Name = "allow-open-http"
+    },
+    var.DEFAULT_TAGS
+  )
+}
+
+module "https_443_sg" {
+  source  = "terraform-aws-modules/security-group/aws//modules/https-443"
+  version = "~> 3.0"
+
+  name = "https-443-sg"
+  description = "Security group with HTTPS ports open for everybody"
+  vpc_id      = module.main-vpc.vpc_id
+
+  ingress_cidr_blocks = ["0.0.0.0/0"]
+  egress_rules        = ["https-443-tcp"]
+
+  tags = merge(
+    {
+      # Name = format("%s-%s-https", var.svc_prefix, var.svc_name)
+      Name = "allow-open-https"
+    },
+    var.DEFAULT_TAGS
+  )
+}
