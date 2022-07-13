@@ -4,6 +4,7 @@
 
 1. We need the s3 for the remote terraform state, so navigate to the state directory (prod, test etc.), and create it first
 2. vpc
+3. atlas
 
 ## Removing older Version
 

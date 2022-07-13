@@ -15,6 +15,11 @@ variable "atlas_region" {
   description = "Atlas region - should correspond to VPC region"
 }
 
+variable "atlas_project_name" {
+  type = string
+  description = "Atlas project name"
+}
+
 variable "atlas_provider" {
   type = string
   description = "Atlas provider"
@@ -49,6 +54,11 @@ variable "aws_account_id" {
 variable "aws_region" {
   type = string
   description = "AWS Region"
+}
+
+variable "db_users" {
+  type = map
+  description = "A map of db users and dbs "
 }
 
 variable "cloud_backup" {

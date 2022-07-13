@@ -3,11 +3,6 @@
 # terraform docs: https://registry.terraform.io/providers/mongodb/mongodbatlas/latest/docs
 
 terraform {
-  # backend "s3" {
-  #   bucket = "wt-tf-state-v3-prod"
-  #   key    = "atlas.tfstate"
-  #   region = "ca-central-1"
-  # }
   required_providers {
     mongodbatlas = {
       source = "mongodb/mongodbatlas"
@@ -16,7 +11,6 @@ terraform {
       source = "hashicorp/aws"
     }
   }
-  # required_version = ">= 0.13"
 }
 
 data "terraform_remote_state" "vpc" {
@@ -25,7 +19,6 @@ data "terraform_remote_state" "vpc" {
     bucket  = var.state_bucket
     key     = var.vpc_state_key
     region  = var.aws_region
-    # profile = "default" // FIXME: should come from stage
   }
 }
 
@@ -34,7 +27,7 @@ data "aws_vpc" "default" {
 }
 
 resource "mongodbatlas_project" "aws_atlas" {
-  name   = "AWS Peer" // FIXME: should come from stage
+  name   = var.atlas_project_name
   org_id = var.atlas_org_id
 }
 

@@ -32,3 +32,13 @@ output "azs" {
   description = "A list of availability zones specified as argument to this module"
   value       = module.vpc.azs
 }
+
+#
+# Security Groups
+#
+
+# HTTPS
+output "https_security_group_id" {
+  description = "The ID of the security group"
+  value       = module.https_443_sg.this_security_group_id
+}

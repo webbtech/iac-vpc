@@ -82,6 +82,7 @@ module "vpc" {
   )
 
   # Default security group
+  # I'm assuming this is an additional 'hardening' in the sense that the default group is entirely closed
   manage_default_security_group  = true
   default_security_group_ingress = []
   default_security_group_egress = []

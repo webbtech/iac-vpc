@@ -1,3 +1,6 @@
+#
+# VPC
+#
 output "vpc_id" {
   description = "The ID of the VPC"
   value       = module.main_vpc.vpc_id
@@ -18,4 +21,14 @@ output "private_subnets" {
 output "public_subnets" {
   description = "List of IDs of public subnets"
   value       = module.main_vpc.public_subnets
+}
+
+#
+# Security Groups
+#
+
+# HTTPS
+output "https_security_group_id" {
+  description = "The ID of the security group"
+  value       = module.main_vpc.https_security_group_id
 }
