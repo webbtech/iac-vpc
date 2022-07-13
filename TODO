@@ -1,0 +1,4 @@
+
+Todo:
+  ☐ Remove Atlas Organization (Webbtech) API keys not in use - under Organization Access Manager > API Keys
+  ✔ Check the terraform-aws-vpc for how to deal with default security group @done(22-06-28 16:10)
