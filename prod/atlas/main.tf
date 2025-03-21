@@ -4,8 +4,38 @@ locals {
   vpc_state_key = "vpc.tfstate"
   region        = "ca-central-1"
   db_users = {
+    "gdps-fs-import-prod" = { 
+      username  = "arn:aws:iam::407205661819:role/gdps-fs-import-prod-LambdaRole-YVDU7FL2HY7D",
+      role_name = "readWrite",
+      db_name   = "gales-sales"
+    }
+    "gsales-api-prod" = { 
+      username  = "arn:aws:iam::407205661819:role/gsales-api-prod-LambdaRole-HP8CBVDBR1GJ",
+      role_name = "readWrite",
+      db_name   = "gales-sales"
+    }
+    "gsales-api-stage" = { 
+      username  = "arn:aws:iam::407205661819:role/gsales-api-stage-LambdaRole-1F35MLJHRMV1Q",
+      role_name = "readWrite",
+      db_name   = "gales-sales-test"
+    }
+    "gsales-pdf-reports-prod" = { 
+      username  = "arn:aws:iam::407205661819:role/gsales-pdf-reports-prod-LambdaRole-1UQ1UTGATIR4U"
+      role_name = "readWrite",
+      db_name   = "gales-sales"
+    }
+    "gsales-pdf-reports-stage" = { 
+      username  = "arn:aws:iam::407205661819:role/gsales-pdf-reports-stage-LambdaRole-JD61CAZ6UOIR"
+      role_name = "readWrite",
+      db_name   = "gales-sales-test"
+    }
+    "gsales-xls-reports-prod" = { 
+      username  = "arn:aws:iam::407205661819:role/gsales-xls-reports-prod-ReportsRole-3KRH0EXHVWV3"
+      role_name = "readWrite",
+      db_name   = "gales-sales"
+    }
     "gsales-xls-reports-stage" = { 
-      username  = "arn:aws:iam::407205661819:role/gsales-xls-reports-stage-ReportsRole-1CG93B5BRLOX8",
+      username  = "arn:aws:iam::407205661819:role/gsales-xls-reports-stage-ReportsRole-1CG93B5BRLOX8"
       role_name = "readWrite",
       db_name   = "gales-sales-test"
     }
